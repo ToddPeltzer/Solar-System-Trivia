@@ -12,6 +12,7 @@ let answer2 = document.querySelector("#answer2")
 let answer3 = document.querySelector("#answer3")
 let answer4 = document.querySelector("#answer4")
 let startOverDiv = document.querySelector(".startOverDiv")
+let counter = 0
 
 //planet information
 const planetInformation = [
@@ -26,9 +27,6 @@ const planetInformation = [
 ]
 
 //opening page
-welcomeTitle.innerText = "Welcome to Solar System Trivia"
-welcomeStatement.innerText = "Do you have what it takes to go to the great beyond?"
-startButton.innerText = "Start Game"
 questionDiv.style.visibility = 'hidden'
 startOverDiv.style.visibility = 'hidden'
 
@@ -36,78 +34,28 @@ startOverDiv.style.visibility = 'hidden'
 //function to get to mercury from home page
 function welcomePageToMercury () {
     welcomeDiv.style.visibility = 'hidden'
-    planet.innerText = planetInformation[0]['name']
-    question.innerText = planetInformation[0]['question']
-    answer1.innerText = planetInformation[0]['answer']
-    answer2.innerText = planetInformation[0]['wrongAnswers'][0]
-    answer3.innerText = planetInformation[0]['wrongAnswers'][1]
-    answer4.innerText = planetInformation[0]['wrongAnswers'][2]
     questionDiv.style.visibility = 'visible'
+    planetToPlanet(counter)
 }
+
+
+//getting from planet to planet 
+function planetToPlanet (num) {
+    planet.innerText = planetInformation[num]['name']
+    question.innerText = planetInformation[num]['question']
+    answer1.innerText = planetInformation[num]['answer']
+    answer2.innerText = planetInformation[num]['wrongAnswers'][0]
+    answer3.innerText = planetInformation[num]['wrongAnswers'][1]
+    answer4.innerText = planetInformation[num]['wrongAnswers'][2] 
+}
+
+
+//if answer1 is clicked, will go to the next page
+answer1.addEventListener('click', () => {
+    counter++
+    planetToPlanet(counter)
+})
+
 
 //button to start the game function/event
 startButton.addEventListener('click', welcomePageToMercury)
-
-function planetToPlanet () {
-    if (answer1.innerText == planetInformation[0]['answer']) {
-        planet.innerText = planetInformation[1]['name']
-        question.innerText = planetInformation[1]['question']
-        answer1.innerText = planetInformation[1]['answer']
-        answer2.innerText = planetInformation[1]['wrongAnswers'][0]
-        answer3.innerText = planetInformation[1]['wrongAnswers'][1]
-        answer4.innerText = planetInformation[1]['wrongAnswers'][2]
-    } else if (answer1.innerText == planetInformation[1]['answer']) {
-        planet.innerText = planetInformation[2]['name']
-        question.innerText = planetInformation[2]['question']
-        answer1.innerText = planetInformation[2]['answer']
-        answer2.innerText = planetInformation[2]['wrongAnswers'][0]
-        answer3.innerText = planetInformation[2]['wrongAnswers'][1]
-        answer4.innerText = planetInformation[2]['wrongAnswers'][2]
-    } else if (answer1.innerText == planetInformation[2]['answer']) {
-        planet.innerText = planetInformation[3]['name']
-        question.innerText = planetInformation[3]['question']
-        answer1.innerText = planetInformation[3]['answer']
-        answer2.innerText = planetInformation[3]['wrongAnswers'][0]
-        answer3.innerText = planetInformation[3]['wrongAnswers'][1]
-        answer4.innerText = planetInformation[3]['wrongAnswers'][2]
-    } else if (answer1.innerText == planetInformation[3]['answer']) {
-        planet.innerText = planetInformation[4]['name']
-        question.innerText = planetInformation[4]['question']
-        answer1.innerText = planetInformation[4]['answer']
-        answer2.innerText = planetInformation[4]['wrongAnswers'][0]
-        answer3.innerText = planetInformation[4]['wrongAnswers'][1]
-        answer4.innerText = planetInformation[4]['wrongAnswers'][2]
-    } else if (answer1.innerText == planetInformation[4]['answer']) {
-        planet.innerText = planetInformation[5]['name']
-        question.innerText = planetInformation[5]['question']
-        answer1.innerText = planetInformation[5]['answer']
-        answer2.innerText = planetInformation[5]['wrongAnswers'][0]
-        answer3.innerText = planetInformation[5]['wrongAnswers'][1]
-        answer4.innerText = planetInformation[5]['wrongAnswers'][2]
-    } else if (answer1.innerText == planetInformation[5]['answer']) {
-        planet.innerText = planetInformation[6]['name']
-        question.innerText = planetInformation[6]['question']
-        answer1.innerText = planetInformation[6]['answer']
-        answer2.innerText = planetInformation[6]['wrongAnswers'][0]
-        answer3.innerText = planetInformation[6]['wrongAnswers'][1]
-        answer4.innerText = planetInformation[6]['wrongAnswers'][2]
-    } else if (answer1.innerText == planetInformation[6]['answer']) {
-        planet.innerText = planetInformation[7]['name']
-        question.innerText = planetInformation[7]['question']
-        answer1.innerText = planetInformation[7]['answer']
-        answer2.innerText = planetInformation[7]['wrongAnswers'][0]
-        answer3.innerText = planetInformation[7]['wrongAnswers'][1]
-        answer4.innerText = planetInformation[7]['wrongAnswers'][2]
-    } else if (answer1.innerText == planetInformation[7]['answer']) {
-        planet.innerText = planetInformation[8]['name']
-        question.innerText = planetInformation[8]['question']
-        answer1.innerText = planetInformation[8]['answer']
-        answer2.innerText = planetInformation[8]['wrongAnswers'][0]
-        answer3.innerText = planetInformation[8]['wrongAnswers'][1]
-        answer4.innerText = planetInformation[8]['wrongAnswers'][2]
-    } 
-    // else if (answer1.innerText == planetInformation[8]['answer']) {
-        //SEND TO VICTORY
-    // } 
-}
-    answer1.addEventListener('click', planetToPlanet)
