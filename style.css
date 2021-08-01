@@ -1,3 +1,19 @@
+html {
+    background-color: black;
+}
+
+body {
+    color: white;
+    display: block;
+    text-align: center;
+}
+
 .button {
     padding: 50px;
+    color: black;
+}
+
+img {
+    height: 400px;
+    width: 400px;
 }
