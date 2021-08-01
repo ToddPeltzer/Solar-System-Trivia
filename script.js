@@ -1,18 +1,12 @@
 let welcomeDiv = document.querySelector('.welcomeSection')
-let welcomeTitle = document.querySelector('.welcome')
-let welcomeStatement = document.querySelector('.welcomeStatement')
 let startButton = document.querySelector('.startGame')
 let questionDiv = document.querySelector('.questionSection')
+let buttonDiv = document.querySelector('.buttonDiv')
+let wrongElementButton = document.createElement('button')
+let correctElementButton = document.createElement('button')
 let planet = document.querySelector('.planetName') //grabbing planet name to be displayed
 let planetImage = document.querySelector('.planetImage')
 let question = document.querySelector('.planetQuestion') //grabbing question to be displayed
-//grabbing all answer buttons
-let allButtons = document.querySelectorAll('.button')
-let answer1 = document.querySelector("#answer1")
-let answer2 = document.querySelector("#answer2")
-let answer3 = document.querySelector("#answer3")
-let answer4 = document.querySelector("#answer4")
-let startOverDiv = document.querySelector(".startOverDiv")
 let counter = 0
 
 //planet information
@@ -29,9 +23,12 @@ const planetInformation = [
 
 const imageArray = ["/mercury-image.jpg", "/venus-image.jpg", "/earth-image.jpg", "/mars-image.jpg", "/jupiter-image.jpg", "/saturn-image.jpg", "/uranus-image.jpg", "/neptune-image.jpg",]
 
+
+
+
+
 //opening page
 questionDiv.style.visibility = 'hidden'
-startOverDiv.style.visibility = 'hidden'
 
 
 //function to get to mercury from home page
@@ -47,16 +44,32 @@ function planetToPlanet (num) {
     planet.innerText = planetInformation[num]['name']
     planetImage.src = imageArray[num]
     question.innerText = planetInformation[num]['question']
-    answer1.innerText = planetInformation[num]['answer']
-    answer2.innerText = planetInformation[num]['wrongAnswers'][0]
-    answer3.innerText = planetInformation[num]['wrongAnswers'][1]
-    answer4.innerText = planetInformation[num]['wrongAnswers'][2] 
+
+    for (i=0; i<planetInformation[num]['wrongAnswers'].length; i++) {
+        wrongElementButton = document.createElement('button')
+        wrongElementButton.innerText = planetInformation[num]['wrongAnswers'][i]
+        buttonDiv.appendChild(wrongElementButton)
+        console.log(wrongElementButton) 
+        console.log(num)
+        console.log(i)
+
+    }
+    correctElementButton.innerText = planetInformation[num]['answer']    
+    buttonDiv.appendChild(correctElementButton)
 }
 
 
-//if answer1 is clicked, will go to the next page
-answer1.addEventListener('click', () => {
+//if correct answer is clicked, will go to the next planet
+correctElementButton.addEventListener('click', () => {
+    buttonDiv.innerText = ""
     counter++
+    planetToPlanet(counter)
+})
+
+//if wrong answer is clicked, will go back to first planet
+wrongElementButton.addEventListener('click', () => {
+    buttonDiv.innerText = ""
+    counter = 0
     planetToPlanet(counter)
 })
 
