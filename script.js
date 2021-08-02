@@ -6,6 +6,11 @@ let planet = document.querySelector('.planetName') //grabbing planet name to be 
 let planetImage = document.querySelector('.planetImage')
 let question = document.querySelector('.planetQuestion') //grabbing question to be displayed
 let counter = 0
+//adding modal elements
+const rulesModalContainer = document.querySelector('#rulesModalContainer')
+const ruleModalText = document.querySelector('#ruleModalText')
+const ruleCloseButton = document.querySelector('#ruleClose')
+const rulesButton = document.querySelector('#rulesButton')
 
 //planet information
 const planetInformation = [
@@ -29,6 +34,15 @@ function welcomePageToMercury () {
     planetToPlanet(counter)
 }
 
+function ruleScreen () {
+    rulesModalContainer.style.display = 'block'
+    ruleModalText.style.display = 'block'
+}
+
+function closeRuleModal () {
+    rulesModalContainer.style.display = 'none'
+    ruleModalText.style.display = 'none'
+}
 
 function planetToPlanet (num) {
     questionDiv.style.display = "block"
@@ -67,3 +81,8 @@ function planetToPlanet (num) {
 
 //button to start the game function/event
 startButton.addEventListener('click', welcomePageToMercury)
+
+rulesButton.addEventListener('click', ruleScreen)
+
+ruleCloseButton.addEventListener('click', closeRuleModal)
+

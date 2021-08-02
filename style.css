@@ -1,26 +1,33 @@
 html {
     background-image: url(stars.gif);
-    background-size: cover;
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
 }   
 
 #ruleModalContainer {
-	background-color: grey;
-	position: fixed;
 	top: 0;
 	left: 0;
 	height: 100%;
 	width: 100%;
-	z-index: 1;
-	overflow: auto;
 }
 
 #ruleModalText {
-	background-color: grey;
-	height: 350px;
-	width: 550;
+	background-color: rgba(0, 0, 0);
 	border-radius: 2px;
-	margin: 150px auto;
+	margin: 60px auto;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	max-width: 100%;
+	overflow: auto;
 	display: none;
+	z-index: 1;
 }
 
 body {
