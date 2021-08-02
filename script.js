@@ -19,25 +19,19 @@ const planetInformation = [
     {name: "Neptune",   image: "neptune-image.jpg", question: "What was Neptune named after?",                                              answer: ["God of the Sea"],         wrongAnswers: ["God of the Air", "God of the Land", "God of the Moon"],                                                             explination: "It was given this name due to its blue ocean-like color."}
 ]
 
-const imageArray = ["/mercury-image.jpg", "/venus-image.png", "/earth-image.png", "/mars-image.png", "/jupiter-image.png", "/saturn-image.jpg", "/uranus-image.png", "/neptune-image.png",]
-
-
-
-
-
-//opening page
-questionDiv.style.visibility = 'hidden'
+const imageArray = ["/mercury-image.png", "/venus-image.png", "/earth-image.png", "/mars-image.png", "/jupiter-image.png", "/saturn-image.png", "/uranus-image.png", "/neptune-image.png",]
 
 
 //function to get to mercury from home page
 function welcomePageToMercury () {
-    welcomeDiv.style.visibility = 'hidden'
-    questionDiv.style.visibility = 'visible'
+    welcomeDiv.style.display = 'none'
+    questionDiv.style.display = 'block'
     planetToPlanet(counter)
 }
 
 
 function planetToPlanet (num) {
+    questionDiv.style.display = "block"
     planet.innerText = planetInformation[num]['name']
     planetImage.src = imageArray[num]
     question.innerText = planetInformation[num]['question']
