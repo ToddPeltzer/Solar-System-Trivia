@@ -9,17 +9,17 @@ let counter = 0
 
 //planet information
 const planetInformation = [
-    {name: "mercury",   image: "mercury-image.jpg", question: "Is this working1?", answer: ["mercuryAnswer"], wrongAnswers: ["wrong answer 1", "wrong answer 2", "wrong answer 3"]},
-    {name: "venus",     image: "venus-image.jpg",   question: "Is this working2?", answer: ["venusAnswer"],   wrongAnswers: ["wrong answer 4", "wrong answer 5", "wrong answer 6"]},
-    {name: "earth",     image: "earth-image.jpg",   question: "Is this working3?", answer: ["earthAnswer"],   wrongAnswers: ["wrong answer 7", "wrong answer 8", "wrong answer 9"]},
-    {name: "mars",      image: "mars-image.jpg",    question: "Is this working4?", answer: ["marsAnswer"],    wrongAnswers: ["wrong answer 10", "wrong answer 11", "wrong answer 12"]},
-    {name: "jupiter",   image: "jupiter-image.jpg", question: "Is this working5?", answer: ["jupiterAnswer"], wrongAnswers: ["wrong answer 13", "wrong answer 14", "wrong answer 15"]},
-    {name: "saturn",    image: "saturn-image.jpg",  question: "Is this working6?", answer: ["saturnAnswer"],  wrongAnswers: ["wrong answer 16", "wrong answer 17", "wrong answer 18"]},
-    {name: "uranus",    image: "uranus-image.jpg",  question: "Is this working7?", answer: ["uranusAnswer"],  wrongAnswers: ["wrong answer 19", "wrong answer 20", "wrong answer 21"]},
-    {name: "neptune",   image: "neptune-image.jpg", question: "Is this working8?", answer: ["neptuneAnswer"], wrongAnswers: ["wrong answer 22", "wrong answer 23", "wrong answer 24"]}
+    {name: "Mercury",   image: "mercury-image.jpg", question: "What color is Mercury's sky?",                                               answer: ["Black"],                  wrongAnswers: ["Blue", "Red", "Orange"],                                                                                            explination: "Mercury has no real atmosphere to scatter the Sun's rays, and so the sky appears black."},
+    {name: "Venus",     image: "venus-image.jpg",   question: "Why is Venus often referred to as Earth's 'sister planet'?",                 answer: ["Similar size and mass"],  wrongAnswers: ["Same amount of days in a year", "They both have water on their surface", "They have the same temperature ranges"],  explination: "While Earth is slightly larger and holds more mass, if they could be viewed side by side they would appear identical."},
+    {name: "Earth",     image: "earth-image.jpg",   question: "How does Earth's size compare to the other planets in our solar system?",    answer: ["Fifth-largest"],          wrongAnswers: ["Third-largest", "Fourth-largest", "Sixth-largest"],                                                                 explination: "The order from largest to smallest planet in our solar system is Jupiter, Saturn, Uranus, Neptune, Earth, Venus, Mars, and Mercury."},
+    {name: "Mars",      image: "mars-image.jpg",    question: "95 percent of Mar's atmosphere is made up of?",                              answer: ["Carbon Dioxide"],         wrongAnswers: ["Oxygen", "Nitrogen", "Carbon Monoxide"],                                                                            explination: "The photochemical reactions in the atmosphere tend to oxidize the organic species and turn them into carbon dioxide."},
+    {name: "Jupiter",   image: "jupiter-image.jpg", question: "How many Earth's could fit into Jupiter?",                                   answer: ["1,300"],                  wrongAnswers: ["1,800", "1,000", "1,500"],                                                                                          explination: "Jupiter is so big it could fit every other planet inside it."},
+    {name: "Saturn",    image: "saturn-image.jpg",  question: "What shape is the storm located at Saturn's North Pole?",                    answer: ["Hexagon"],                wrongAnswers: ["Circle", "Oval", "Octagon"],                                                                                        explination: "This storm was spotted by Voyager 1 and confirmed on the Cassini mission. Hubble has confirmed there is no similar Southern Pole."},
+    {name: "Uranus",    image: "uranus-image.jpg",  question: "What makes Uranus blue?",                                                    answer: ["Methane"],                wrongAnswers: ["Oxygen", "Nitrogen", "Carbon Dioxide"],                                                                             explination: "The methane in Uranus' upper atmosphere absorbs the red light from the sun and reflects blue."},
+    {name: "Neptune",   image: "neptune-image.jpg", question: "What was Neptune named after?",                                              answer: ["God of the Sea"],         wrongAnswers: ["God of the Air", "God of the Land", "God of the Moon"],                                                             explination: "It was given this name due to its blue ocean-like color."}
 ]
 
-const imageArray = ["/mercury-image.jpg", "/venus-image.jpg", "/earth-image.jpg", "/mars-image.jpg", "/jupiter-image.jpg", "/saturn-image.jpg", "/uranus-image.jpg", "/neptune-image.jpg",]
+const imageArray = ["/mercury-image.jpg", "/venus-image.png", "/earth-image.png", "/mars-image.png", "/jupiter-image.png", "/saturn-image.jpg", "/uranus-image.png", "/neptune-image.png",]
 
 
 
