@@ -82,17 +82,23 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
                 })
             //if inner text does not match the answer then player starts over
             } else if (event.target.innerText !== planetInformation[counter]['answer'][0]) {
-                buttonDiv.innerText = ""
-                counter = 0
-                planetToPlanet(counter)
-                
+                questionDiv.style.display = "none"
+                buttonDiv.style.display = "none"
+                planetModalContainer.style.display = 'block'
+                planetModalHeader.innerText = "Oh no! You crashed!"
+                planetModalImage.src=""
+                planetModalButton.innerText = "Restart your journey"
+                planetModalButton.addEventListener('click', () => {
+                    buttonDiv.innerText = ""
+                    counter = 0
+                    planetModalContainer.style.display = 'none'
+                    planetToPlanet(counter)
+                })
             }
         })
         buttonDiv.appendChild(elementButton) //appending the buttons to the button div
     })
 }
-
-
 
 //button to start the game function/event
 startButton.addEventListener('click', welcomePageToMercury)
