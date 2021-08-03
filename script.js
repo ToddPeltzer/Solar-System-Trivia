@@ -1,12 +1,12 @@
-let welcomeDiv = document.querySelector('.welcomeSection')
-let startButton = document.querySelector('.startGame')
-let questionDiv = document.querySelector('.questionSection')
-let buttonDiv = document.querySelector('.buttonDiv')
-let planet = document.querySelector('.planetName') //grabbing planet name to be displayed
-let planetImage = document.querySelector('.planetImage')
-let question = document.querySelector('.planetQuestion') //grabbing question to be displayed
-let counter = 0
-//adding modal elements
+let welcomeDiv = document.querySelector('.welcomeSection') //set a variable for welcome div section
+let startButton = document.querySelector('.startGame') //set variable for start button
+let questionDiv = document.querySelector('.questionSection') //set variable for question div section
+let buttonDiv = document.querySelector('.buttonDiv') //set variable where answer buttons will be created
+let planet = document.querySelector('.planetName') //set variable where planet names will go
+let planetImage = document.querySelector('.planetImage') //set variable where planet images will go
+let question = document.querySelector('.planetQuestion') ////set variable where planet questions will go
+let counter = 0 //set variable for the counter in which our function will run through the array of objects based on correct/incorrect
+//adding rule modal elements
 const rulesModalContainer = document.querySelector('#rulesModalContainer')
 const ruleModalText = document.querySelector('#ruleModalText')
 const ruleCloseButton = document.querySelector('#ruleClose')
@@ -37,11 +37,13 @@ function welcomePageToMercury () {
 function ruleScreen () {
     rulesModalContainer.style.display = 'block'
     ruleModalText.style.display = 'block'
+    welcomeDiv.style.display = 'none'
 }
 
 function closeRuleModal () {
     rulesModalContainer.style.display = 'none'
     ruleModalText.style.display = 'none'
+    welcomeDiv.style.display = 'block'
 }
 
 function planetToPlanet (num) {
@@ -52,7 +54,6 @@ function planetToPlanet (num) {
 
     let answerArray = [].concat(planetInformation[num]['answer'],planetInformation[num]['wrongAnswers'])
     answerArray.sort(() => Math.random() - 0.5)
-    console.log(answerArray)
 
     answerArray.forEach(answer => {
         elementButton = document.createElement('button')
@@ -63,7 +64,6 @@ function planetToPlanet (num) {
                 counter++
                 planetToPlanet(counter)
             } else if (event.target.innerText !== planetInformation[counter]['answer'][0]) {
-                console.log(event)
                 buttonDiv.innerText = ""
                 counter = 0
                 planetToPlanet(counter)

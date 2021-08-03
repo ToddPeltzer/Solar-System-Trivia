@@ -8,27 +8,32 @@ html {
     left: 0;
 }   
 
-#ruleModalContainer {
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-}
-
-#ruleModalText {
-	background-color: rgba(0, 0, 0);
-	border-radius: 2px;
-	margin: 60px auto;
-	position: fixed;
+#rulesModalContainer {
+	color: rgb(60, 97, 134);
 	top: 0;
 	left: 0;
 	bottom: 0;
 	right: 0;
-	max-width: 100%;
+	max-width: 50%;
+	margin: 60px auto;
+	position: fixed;
 	overflow: auto;
 	display: none;
 	z-index: 1;
+	
 }
+
+#ruleModalText {
+	background-color: rgba(0, 0, 0);
+	padding: 10px;
+	border-radius: 25px;
+}
+
+#ruleClose {
+	background-color: grey;
+}
+
+
 
 body {
     color: white;
