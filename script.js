@@ -65,15 +65,16 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
         elementButton.innerText = answer //storing the random answers into buttons text 
         //adding event listener to the element buttons just created.
         elementButton.addEventListener('click', (event) => {
-            //if the inner text of what was just clicked equals the answer, then plaer moves on
+            //if the inner text of what was just clicked equals the FINAL answer, then victory screen appears
             if (event.target.innerText === planetInformation[7]['answer'][0]) {
-                questionDiv.style.display = "none"
-                buttonDiv.style.display = "none"
-                planetModalContainer.style.display = 'block'
-                planetModalHeader.innerText = "You successfully made it out of the solar system!"
-                planetModalImage.src="escaped-image.gif"
-                planetModalFact.innerText = "What now?...."
-                planetModalButton.innerText = "Go Home?"
+                questionDiv.style.display = "none" //makes the question section diusappear from the screen
+                buttonDiv.style.display = "none" //bakes the buttons that were created disappear
+                planetModalContainer.style.display = 'block' //has the in game modal appear
+                planetModalHeader.innerText = "You successfully made it out of the solar system!" //creates inner text within the in game modal
+                planetModalImage.src="escaped-image.gif" //adds an image to the in game modal
+                planetModalFact.innerText = "What now?...." //adds more text under the image source within the in game modal
+                planetModalButton.innerText = "Go Home?" //adds text to the button in the in game modal
+                //add event listener for when the button is clicked
                 planetModalButton.addEventListener('click', () => {
                     buttonDiv.innerText = ""
                     counter = 0
@@ -82,6 +83,7 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
                     questionDiv.style.display = "none"
                     welcomeDiv.style.display = 'block'
                 })
+            //if the inner text of what was just clicked equals the answer, then the next planet screen appears
             } else if (event.target.innerText === planetInformation[counter]['answer'][0]) {
                 questionDiv.style.display = "none"
                 buttonDiv.style.display = "none"
@@ -96,10 +98,14 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
                     planetModalContainer.style.display = 'none'
                     planetToPlanet(counter)
                 })
-            //if inner text does not match the answer then player starts over
+            //if inner text does not match the answer then the crash screen appears
             } else if (event.target.innerText !== planetInformation[counter]['answer'][0]) {
+        //ADD IN THE LIVES AND BUTTON DISABLE HERE as an 'if' statement        
                 questionDiv.style.display = "none"
                 buttonDiv.style.display = "none"
+        //this below will be the same for the 'else if' part of the nested if statement  
+        //can also add checkpoint for anything over '4' or whatever number for checkpoint
+        //reset lives on checkpoint      
                 planetModalContainer.style.display = 'block'
                 planetModalHeader.innerText = "Oh no! You crashed!"
                 planetModalImage.src="crash-image.gif"
@@ -117,9 +123,8 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
     })
 }
 
-//button to start the game function/event
-startButton.addEventListener('click', welcomePageToMercury)
+startButton.addEventListener('click', welcomePageToMercury) //button to start the game and get to the 
 
-rulesButton.addEventListener('click', ruleScreen)
+rulesButton.addEventListener('click', ruleScreen) //button to show the rules from the home page
 
-ruleCloseButton.addEventListener('click', closeRuleModal)
+ruleCloseButton.addEventListener('click', closeRuleModal) //button to close the rules modal on the home page
