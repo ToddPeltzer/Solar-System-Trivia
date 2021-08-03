@@ -8,6 +8,10 @@ html {
     left: 0;
 }   
 
+.welcomeSection {
+	padding-top: 10%;
+}
+
 #rulesModalContainer {
 	color: rgb(60, 97, 134);
 	top: 0;
@@ -53,4 +57,25 @@ body {
 img {
     height: 300px;
     width: 300px;
+}
+
+#planetModalContainer {
+	color: rgb(60, 97, 134);
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	max-width: 50%;
+	margin: 60px auto;
+	position: fixed;
+	overflow: auto;
+	display: none;
+	z-index: 1;
+	
+}
+
+#planetModalText {
+	background-color: rgba(0, 0, 0);
+	padding: 10px;
+	border-radius: 25px;
 }
