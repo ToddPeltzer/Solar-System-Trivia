@@ -66,7 +66,23 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
         //adding event listener to the element buttons just created.
         elementButton.addEventListener('click', (event) => {
             //if the inner text of what was just clicked equals the answer, then plaer moves on
-            if (event.target.innerText === planetInformation[counter]['answer'][0]) {
+            if (event.target.innerText === planetInformation[7]['answer'][0]) {
+                questionDiv.style.display = "none"
+                buttonDiv.style.display = "none"
+                planetModalContainer.style.display = 'block'
+                planetModalHeader.innerText = "You successfully made it out of the solar system!"
+                planetModalImage.src="escaped-image.gif"
+                planetModalFact.innerText = "What now?...."
+                planetModalButton.innerText = "Go Home?"
+                planetModalButton.addEventListener('click', () => {
+                    buttonDiv.innerText = ""
+                    counter = 0
+                    planetModalContainer.style.display = 'none'
+                    buttonDiv.style.display = "none"
+                    questionDiv.style.display = "none"
+                    welcomeDiv.style.display = 'block'
+                })
+            } else if (event.target.innerText === planetInformation[counter]['answer'][0]) {
                 questionDiv.style.display = "none"
                 buttonDiv.style.display = "none"
                 planetModalContainer.style.display = 'block'
@@ -86,7 +102,8 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
                 buttonDiv.style.display = "none"
                 planetModalContainer.style.display = 'block'
                 planetModalHeader.innerText = "Oh no! You crashed!"
-                planetModalImage.src=""
+                planetModalImage.src="crash-image.gif"
+                planetModalFact.innerText = ""
                 planetModalButton.innerText = "Restart your journey"
                 planetModalButton.addEventListener('click', () => {
                     buttonDiv.innerText = ""
