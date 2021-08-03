@@ -1,6 +1,6 @@
 html {
-    background-image: url(stars.gif);
-    object-fit: cover;
+    background-image: url(/gifs/stars.gif);
+    background-size: fill;
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -47,11 +47,6 @@ body {
 
 .questionSection {
 	display: none;
-}
-
-.button {
-    padding: 50px;
-    color: black;
 }
 
 img {
