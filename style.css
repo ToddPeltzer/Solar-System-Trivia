@@ -32,6 +32,8 @@ body {
     0 0 25px black,
     0 0 37px black;
 	font-family: 'Fjalla One', sans-serif;
+	margin-top: 80px;
+	margin-right: 80px;
 }
 
 #lifeText {
@@ -51,6 +53,14 @@ body {
 	margin-top: 15px;
 	margin-right: 20px;
 	padding: 0px 20px 0px 20px;
+	font-family: 'Bebas Neue', cursive;
+	font-size: 20px;
+	background-color: slategrey;
+}
+
+#hintClosed {
+	display: none;
+	padding: 3px 10px 0px 10px;
 	font-family: 'Bebas Neue', cursive;
 	font-size: 20px;
 	background-color: slategrey;
