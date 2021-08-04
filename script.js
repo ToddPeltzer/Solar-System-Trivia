@@ -18,11 +18,12 @@ const planetModalHeader = document.querySelector('#planetModalHeader')
 const planetModalImage = document.querySelector('#planetModalImage')
 const planetModalFact = document.querySelector('#planetModalFact')
 const planetModalButton = document.querySelector('#planetModalButton')
+// const planetHomeButton = document.querySelector('#planetToHome')
 
 //planet information
 const planetInformation = [
     {name: "Mercury",   image: "/images/mercury-image.png", question: "What color is Mercury's sky?",                                               answer: ["Black"],                              wrongAnswers: ["Blue", "Red", "Orange"],                                                                                                                        explination: "Mercury has no real atmosphere to scatter the Sun's rays, and so the sky appears black."},
-    {name: "Venus",     image: "/images/venus-image.png",   question: "Why is Venus often referred to as Earth's 'sister planet'?",                 answer: ["They have a similar size and mass"],  wrongAnswers: ["They have the same amount of days in a year", "They both have water on their surface", "They have the same temperature ranges"],                explination: "While Earth is slightly larger and holds more mass, if they could be viewed side by side they would appear identical."},
+    {name: "Venus",     image: "/images/venus-image.png",   question: "Why is Venus often referred to as Earth's sister planet?",                   answer: ["They have a similar size and mass"],  wrongAnswers: ["They have the same amount of days in a year", "They both have water on their surface", "They have the same temperature ranges"],                explination: "While Earth is slightly larger and holds more mass, if they could be viewed side by side they would appear identical."},
     {name: "Earth",     image: "/images/earth-image.png",   question: "How does Earth's size compare to the other planets in our solar system?",    answer: ["Fifth-largest"],                      wrongAnswers: ["Third-largest", "Fourth-largest", "Sixth-largest"],                                                                                             explination: "The order from largest to smallest planet in our solar system is Jupiter, Saturn, Uranus, Neptune, Earth, Venus, Mars, and Mercury."},
     {name: "Mars",      image: "/images/mars-image.png",    question: "95 percent of Mar's atmosphere is made up of?",                              answer: ["Carbon Dioxide"],                     wrongAnswers: ["Oxygen", "Nitrogen", "Carbon Monoxide"],                                                                                                        explination: "The photochemical reactions in the atmosphere tend to oxidize the organic species and turn them into carbon dioxide."},
     {name: "Jupiter",   image: "/images/jupiter-image.png", question: "How many Earth's could fit into Jupiter?",                                   answer: ["1,300"],                              wrongAnswers: ["1,800", "1,000", "1,500"],                                                                                                                      explination: "Jupiter is so big it could fit every other planet inside it."},
@@ -87,6 +88,7 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
             } else if (event.target.innerText === planetInformation[3]['answer'][0]) {
                 questionDiv.style.display = "none"
                 buttonDiv.style.display = "none"
+                // planetHomeButton.style.display = "none"
                 planetModalContainer.style.display = 'block'
                 planetModalHeader.innerText = `Congratulations, you made it to ${planetInformation[num+1]['name']}! This is your checkpoint for making it to the first gas giant.`
                 planetModalImage.src="/gifs/checkpoint-notification.gif"
@@ -96,10 +98,11 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
             } else if (event.target.innerText === planetInformation[counter]['answer'][0]) {
                 questionDiv.style.display = "none"
                 buttonDiv.style.display = "none"
+                // planetHomeButton.style.display = "none"
                 planetModalContainer.style.display = 'block'
                 planetModalHeader.innerText = `Nice job! You have passed ${planetInformation[num]['name']}!`
                 planetModalImage.src="/gifs/next-level.gif"
-                planetModalFact.innerText = `Answer explination: ${planetInformation[num]['explination']}`
+                planetModalFact.innerText = `${planetInformation[num]['explination']}`
                 planetModalButton.innerText = "Next Planet"
             //if inner text does not match the answer then the crash screen appears
             } else if ((event.target.innerText !== planetInformation[counter]['answer'][0]) && (num < 4)) {
@@ -110,18 +113,22 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
         //can also add checkpoint for anything over '4' or whatever number for checkpoint
         //reset lives on checkpoint      
                 planetModalContainer.style.display = 'block'
+                // planetHomeButton.style.display = 'block'
                 planetModalHeader.innerText = "Oh no! You crashed!"
                 planetModalImage.src="/gifs/crash-image.gif"
                 planetModalFact.innerText = ""
-                planetModalButton.innerText = "Restart your journey"
+                // planetHomeButton.innerText = "Home Page"
+                planetModalButton.innerText = "Back to Mercury"
                 counter = -1 //hack from Will
             } else if ((event.target.innerText !== planetInformation[counter]['answer'][0]) && (num >= 4)) {
                         questionDiv.style.display = "none"
                         buttonDiv.style.display = "none"     
+                        // planetHomeButton.style.display = 'block'
                         planetModalContainer.style.display = 'block'
                         planetModalHeader.innerText = "Don't worry, you get to start at your checkpoint!"
                         planetModalImage.src="/gifs/checkpoint.gif"
                         planetModalFact.innerText = ""
+                        // planetHomeButton.innerText = "Home Page"
                         planetModalButton.innerText = "Back to Jupiter"
                         counter = 3 //hack from Will
                     }
@@ -149,3 +156,11 @@ planetModalButton.addEventListener('click', () => {
     planetModalContainer.style.display = 'none'
     planetToPlanet(counter)
 })
+
+// planetHomeButton.addEventListener('click', () => {
+//     welcomeDiv.style.display = "block"
+//     planetModalContainer.style.display = "none"
+//     questionDiv.style.display = "none"
+//     buttonDiv.style.display = "none"
+//     planetModalFact.innerText = ""
+// })

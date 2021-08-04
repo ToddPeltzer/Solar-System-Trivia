@@ -6,27 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solar System Trivia</title>
     <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fjalla+One&family=Georama&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div class='lives'>
         
     </div>
+    
 
     <!-- home page section -->
     <div class="welcomeSection">
-        <h1 class="welcome">Welcome to Solar System Trivia</h1>
+        <h1 class="welcome">Welcome to</h1>
+        <h1 class="welcome" id="titleWelcome">Solar System Trivia</h1>
         <br/>
-        <h2 class="welcomeStatement">Do you have what it takes to go to the great beyond?</h2>
+        <h2 class="welcomeStatement">Can you answer the questions correctly to reach the end of our solar system?</h2>
         <br/>
-        <button id="rulesButton">Astronaut Tips</button>
-        <button class="startGame">Start Journey</button>
+        <br/>
+        <div id="welcomeButtonDiv">
+            <button id="rulesButton">Astronaut Tips</button>
+            <button class="startGame">Start Journey</button>
+        </div>
+
     </div>
         <!-- Rule Modal -->
         <div id="rulesModalContainer">
             <div id="ruleModalText">
-                <h1>Tips to navigating your way through the solar system</h1>
+                <h1 id="ruleModalHeader">Astronaut Tips</h1>
                 <p>If you answer a question correctly, you will fly to the next planet.</p>
-                <p>If you answer a question incorrectly, your space ship will crash.</p>
+                <p>If you answer a question incorrectly, your space ship will crash causing you to start over.</p>
+                <p>Making it to the first gas giant rewards you with a checkpoint!</p>
                 <p>Goodluck!</p>
                 <button id="ruleClose">Close</button>
             </div>
@@ -51,7 +63,10 @@
             <h1 id="planetModalHeader"></h1>
             <img id="planetModalImage" src="">
             <p id="planetModalFact"></p>
-            <button id="planetModalButton"></button>
+            <div class="buttonsForPlanetModal">
+                <!-- <button id="planetToHome"></button> -->
+                <button id="planetModalButton"></button>
+            </div>
         </div>
     </div>
 
