@@ -1,4 +1,5 @@
 const welcomeDiv = document.querySelector('.welcomeSection') //set a variable for welcome div section
+const mainHomeButton = document.querySelector('#mainHome')
 const lives = document.querySelector('.lives')//set variable for lives class to display when game starts
 const lifeOne = document.querySelector('#lifeOne')
 const lifeTwo = document.querySelector('#lifeTwo')
@@ -200,6 +201,17 @@ planetModalButton.addEventListener('click', () => {
 })
 
 planetHomeButton.addEventListener('click', () => {
+    welcomeDiv.style.display = "block"
+    lives.style.display = "none"
+    planetModalContainer.style.display = "none"
+    questionDiv.style.display = "none"
+    buttonDiv.style.display = "none"
+    planetModalFact.innerText = ""
+    counter = 0
+    buttonDiv.innerText = ""
+})
+
+mainHomeButton.addEventListener('click', () => {
     welcomeDiv.style.display = "block"
     lives.style.display = "none"
     planetModalContainer.style.display = "none"
