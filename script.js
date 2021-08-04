@@ -22,14 +22,14 @@ const planetHomeButton = document.querySelector('#planetToHome')
 
 //planet information
 const planetInformation = [
-    {name: "Mercury",   image: "./images/mercury-image.png", question: "What color is Mercury's sky?",                                               answer: ["Black"],                              wrongAnswers: ["Blue", "Red", "Orange"],                                                                                                                        explination: "Mercury has no real atmosphere to scatter the Sun's rays, and so the sky appears black."},
-    {name: "Venus",     image: "./images/venus-image.png",   question: "Why is Venus often referred to as Earth's sister planet?",                   answer: ["They have a similar size and mass"],  wrongAnswers: ["They have the same amount of days in a year", "They both have water on their surface", "They have the same temperature ranges"],                explination: "While Earth is slightly larger and holds more mass, if they could be viewed side by side they would appear identical."},
-    {name: "Earth",     image: "./images/earth-image.png",   question: "How does Earth's size compare to the other planets in our solar system?",    answer: ["Fifth-largest"],                      wrongAnswers: ["Third-largest", "Fourth-largest", "Sixth-largest"],                                                                                             explination: "The order from largest to smallest planet in our solar system is Jupiter, Saturn, Uranus, Neptune, Earth, Venus, Mars, and Mercury."},
-    {name: "Mars",      image: "./images/mars-image.png",    question: "95 percent of Mar's atmosphere is made up of?",                              answer: ["Carbon Dioxide"],                     wrongAnswers: ["Oxygen", "Nitrogen", "Carbon Monoxide"],                                                                                                        explination: "The photochemical reactions in the atmosphere tend to oxidize the organic species and turn them into carbon dioxide."},
-    {name: "Jupiter",   image: "./images/jupiter-image.png", question: "How many Earth's could fit into Jupiter?",                                   answer: ["1,300"],                              wrongAnswers: ["1,800", "1,000", "1,500"],                                                                                                                      explination: "Jupiter is so big it could fit every other planet inside it."},
-    {name: "Saturn",    image: "./images/saturn-image.png",  question: "What shape is the storm located at Saturn's North Pole?",                    answer: ["Hexagon"],                            wrongAnswers: ["Circle", "Oval", "Octagon"],                                                                                                                    explination: "This storm was spotted by Voyager 1 and confirmed on the Cassini mission. Hubble has confirmed there is no similar Southern Pole."},
-    {name: "Uranus",    image: "./images/uranus-image.png",  question: "What makes Uranus blue?",                                                    answer: ["Methane"],                            wrongAnswers: ["Oxygen", "Nitrogen", "Carbon Dioxide"],                                                                                                         explination: "The methane in Uranus' upper atmosphere absorbs the red light from the sun and reflects blue."},
-    {name: "Neptune",   image: "./images/neptune-image.png", question: "What was Neptune named after?",                                              answer: ["God of the Sea"],                     wrongAnswers: ["God of the Air", "God of the Land", "God of the Moon"],                                                                                         explination: "It was given this name due to its blue ocean-like color."}
+    {name: "Mercury",   image: "./images/mercury-image.png", question: "What color is Mercury's sky?",                                               answer: ["Black"],                 wrongAnswers: ["Blue", "Red", "Orange"],                                                        explination: "Mercury has no real atmosphere to scatter the Sun's rays, and so the sky appears black."},
+    {name: "Venus",     image: "./images/venus-image.png",   question: "Why is Venus often referred to as Earth's sister planet?",                   answer: ["Similar size and mass"], wrongAnswers: ["Same calendar year", "Water on their surfaces", "Similar temperature"],  explination: "While Earth is slightly larger and holds more mass, if they could be viewed side by side they would appear identical."},
+    {name: "Earth",     image: "./images/earth-image.png",   question: "How does Earth's size compare to the other planets in our solar system?",    answer: ["Fifth-largest"],         wrongAnswers: ["Third-largest", "Fourth-largest", "Sixth-largest"],                             explination: "The order from largest to smallest planet in our solar system is Jupiter, Saturn, Uranus, Neptune, Earth, Venus, Mars, and Mercury."},
+    {name: "Mars",      image: "./images/mars-image.png",    question: "95 percent of Mar's atmosphere is made up of?",                              answer: ["Carbon Dioxide"],        wrongAnswers: ["Oxygen", "Nitrogen", "Carbon Monoxide"],                                        explination: "The photochemical reactions in the atmosphere tend to oxidize the organic species and turn them into carbon dioxide."},
+    {name: "Jupiter",   image: "./images/jupiter-image.png", question: "How many Earth's could fit into Jupiter?",                                   answer: ["1,300"],                 wrongAnswers: ["2,000", "800", "2,500"],                                                        explination: "Jupiter is so big it could fit every other planet inside it."},
+    {name: "Saturn",    image: "./images/saturn-image.png",  question: "What shape is the storm located at Saturn's North Pole?",                    answer: ["Hexagon"],               wrongAnswers: ["Circle", "Oval", "Octagon"],                                                    explination: "This storm was spotted by Voyager 1 and confirmed on the Cassini mission. Hubble has confirmed there is no similar Southern Pole."},
+    {name: "Uranus",    image: "./images/uranus-image.png",  question: "What makes Uranus blue?",                                                    answer: ["Methane"],               wrongAnswers: ["Oxygen", "Nitrogen", "Carbon Dioxide"],                                         explination: "The methane in Uranus' upper atmosphere absorbs the red light from the sun and reflects blue."},
+    {name: "Neptune",   image: "./images/neptune-image.png", question: "What was Neptune named after?",                                              answer: ["God of the Sea"],        wrongAnswers: ["God of the Air", "God of the Land", "God of the Moon"],                         explination: "It was given this name due to its blue ocean-like color."}
 ]
 
 //function to get to mercury from home page
@@ -63,6 +63,7 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
 
     answerArray.forEach(answer => { //for each answer button, answer will be what came out of the randomized array
         elementButton = document.createElement('button') //creating an element called button
+        elementButton.setAttribute('class', 'inGameButtons')
         elementButton.innerText = answer //storing the random answers into buttons text 
         //adding event listener to the element buttons just created.
         elementButton.addEventListener('click', (event) => {
@@ -90,9 +91,9 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
                 buttonDiv.style.display = "none"
                 planetHomeButton.style.display = "none"
                 planetModalContainer.style.display = 'block'
-                planetModalHeader.innerText = `Congratulations, you made it to ${planetInformation[num+1]['name']}! This is your checkpoint for making it to the first gas giant.`
+                planetModalHeader.innerText = `You made it to a checkpoint on ${planetInformation[num+1]['name']}!`
                 planetModalImage.src="./gifs/checkpoint-notification.gif"
-                planetModalFact.innerText = `Answer explination: ${planetInformation[num]['explination']}`
+                planetModalFact.innerText = `${planetInformation[num]['explination']}`
                 planetModalButton.innerText = "Next Planet"
             //if inner text does not match the answer then the crash screen appears
             } else if (event.target.innerText === planetInformation[counter]['answer'][0]) {
@@ -135,11 +136,11 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
         })
         buttonDiv.appendChild(elementButton) //appending the buttons to the button div
         //answer button styling
-        buttonDiv.style.display = 'flex-wrap'
-        buttonDiv.style.justifyContent = 'center'
-        elementButton.style.margin = '20px'
-        elementButton.style.width = '200px'
-        elementButton.style.height = '50px'
+        // buttonDiv.style.display = 'flex-wrap'
+        // buttonDiv.style.justifyContent = 'center'
+        // elementButton.style.margin = '20px'
+        // elementButton.style.width = '200px'
+        // elementButton.style.height = '50px'
     })
 }
 
