@@ -1,4 +1,8 @@
 const welcomeDiv = document.querySelector('.welcomeSection') //set a variable for welcome div section
+const lives = document.querySelector('.lives')//set variable for lives class to display when game starts
+const lifeOne = document.querySelector('#lifeOne')
+const lifeTwo = document.querySelector('#lifeTwo')
+const lifeThree = document.querySelector('#lifeThree')
 const startButton = document.querySelector('.startGame') //set variable for start button
 const questionDiv = document.querySelector('.questionSection') //set variable for question div section
 const buttonDiv = document.querySelector('.buttonDiv') //set variable where answer buttons will be created
@@ -6,11 +10,13 @@ const planet = document.querySelector('.planetName') //set variable where planet
 const planetImage = document.querySelector('.planetImage') //set variable where planet images will go
 const question = document.querySelector('.planetQuestion') ////set variable where planet questions will go
 let counter = 0 //set variable for the counter in which our function will run through the array of objects based on correct/incorrect
+
 //adding rule modal elements
 const rulesModalContainer = document.querySelector('#rulesModalContainer')
 const ruleModalText = document.querySelector('#ruleModalText')
 const ruleCloseButton = document.querySelector('#ruleClose')
 const rulesButton = document.querySelector('#rulesButton')
+
 //adding planet modal elements
 const planetModalContainer = document.querySelector('#planetModalContainer')
 const planetModalText = document.querySelector('#planetModalText')
@@ -36,6 +42,7 @@ const planetInformation = [
 function welcomePageToMercury () {
     welcomeDiv.style.display = 'none'
     questionDiv.style.display = 'block'
+    lives.style.display = 'flex'
     planetToPlanet(counter)
 }
 
@@ -78,12 +85,12 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
                 planetModalButton.innerText = "Return Home" //adds text to the button in the in game modal
                 //add event listener for when the button is clicked
                 planetModalButton.addEventListener('click', () => {
-                    buttonDiv.innerText = ""
-                    counter = 0
-                    planetModalContainer.style.display = 'none'
-                    buttonDiv.style.display = "none"
-                    questionDiv.style.display = "none"
-                    welcomeDiv.style.display = 'block'
+                buttonDiv.innerText = ""
+                counter = 0
+                planetModalContainer.style.display = 'none'
+                buttonDiv.style.display = "none"
+                questionDiv.style.display = "none"
+                welcomeDiv.style.display = 'block'
                 })
             //if the inner text of what was just clicked equals the answer, then the next planet screen appears
             } else if (event.target.innerText === planetInformation[3]['answer'][0]) {
@@ -107,12 +114,8 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
                 planetModalButton.innerText = "Next Planet"
             //if inner text does not match the answer then the crash screen appears
             } else if ((event.target.innerText !== planetInformation[counter]['answer'][0]) && (num < 4)) {
-        //ADD IN THE LIVES AND BUTTON DISABLE HERE as an 'if' statement        
                 questionDiv.style.display = "none"
-                buttonDiv.style.display = "none"
-        //this below will be the same for the 'else if' part of the nested if statement  
-        //can also add checkpoint for anything over '4' or whatever number for checkpoint
-        //reset lives on checkpoint      
+                buttonDiv.style.display = "none"  
                 planetModalContainer.style.display = 'block'
                 planetHomeButton.style.display = 'block'
                 planetModalHeader.innerText = "Oh no! You crashed!"
@@ -121,26 +124,22 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
                 planetHomeButton.innerText = "Home Page"
                 planetModalButton.innerText = "Back to Mercury"
                 counter = -1 //hack from Will
+                lifeCounter()
             } else if ((event.target.innerText !== planetInformation[counter]['answer'][0]) && (num >= 4)) {
-                        questionDiv.style.display = "none"
-                        buttonDiv.style.display = "none"     
-                        planetHomeButton.style.display = 'block'
-                        planetModalContainer.style.display = 'block'
-                        planetModalHeader.innerText = "Don't worry, you get to start at your checkpoint!"
-                        planetModalImage.src="./gifs/checkpoint.gif"
-                        planetModalFact.innerText = ""
-                        planetHomeButton.innerText = "Home Page"
-                        planetModalButton.innerText = "Back to Jupiter"
-                        counter = 3 //hack from Will
-                    }
+                questionDiv.style.display = "none"
+                buttonDiv.style.display = "none"     
+                planetHomeButton.style.display = 'block'
+                planetModalContainer.style.display = 'block'
+                planetModalHeader.innerText = "Don't worry, you get to start at your checkpoint!"
+                planetModalImage.src="./gifs/checkpoint.gif"
+                planetModalFact.innerText = ""
+                planetHomeButton.innerText = "Home Page"
+                planetModalButton.innerText = "Back to Jupiter"
+                counter = 3 //hack from Will
+                lifeCounter()
+            }
         })
         buttonDiv.appendChild(elementButton) //appending the buttons to the button div
-        //answer button styling
-        // buttonDiv.style.display = 'flex-wrap'
-        // buttonDiv.style.justifyContent = 'center'
-        // elementButton.style.margin = '20px'
-        // elementButton.style.width = '200px'
-        // elementButton.style.height = '50px'
     })
 }
 
@@ -160,6 +159,7 @@ planetModalButton.addEventListener('click', () => {
 
 planetHomeButton.addEventListener('click', () => {
     welcomeDiv.style.display = "block"
+    lives.style.display = "none"
     planetModalContainer.style.display = "none"
     questionDiv.style.display = "none"
     buttonDiv.style.display = "none"
