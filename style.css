@@ -10,6 +10,35 @@ html {
 	overflow-y: visible;
 }   
 
+#lifeText {
+	margin-top: 30px;
+	margin-right: 10px;
+}
+
+.lives {
+	display: flex;
+	justify-content: flex-end;
+	color: white;
+	text-shadow:
+    0 0 3px black,
+    0 0 5px black,
+    0 0 11px black,
+    0 0 10px black,
+    0 0 20px black,
+    0 0 23px black,
+    0 0 25px black,
+    0 0 37px black;
+	font-family: 'Fjalla One', sans-serif;
+}
+
+.lifeImage {
+	height: 50px;
+	width: 30px;
+	margin-top: 15px;
+	margin-right: 15px;
+	margin-left: 5px;
+}
+
 .welcomeSection {
 	padding-top: 10%;
 	font-family: 'Fjalla One', sans-serif;
@@ -136,7 +165,8 @@ body {
     0 0 23px black,
     0 0 25px black,
     0 0 37px black;
-	font-family: 'Georama', sans-serif;}
+	font-family: 'Georama', sans-serif;
+}
 
 .planetQuestion {
 	color: white;
