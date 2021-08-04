@@ -41,6 +41,7 @@ html {
 	font-size: 20px;
 	display: inline-flex;
 	justify-content: center;
+	margin-right: 10px;
 }
 
 #rulesButton:hover {
@@ -54,6 +55,7 @@ html {
 	font-size: 20px;
 	display: inline-flex;
 	justify-content: center;
+	margin-left: 10px;
 }
 
 .startGame:hover {
@@ -175,11 +177,17 @@ img {
 	color: white;
 }
 
+.buttonsForPlanetModal {
+	display: flex;
+	justify-content: center;
+}
+
 #planetModalButton {
 	padding: 3px 10px 0px 10px;
 	font-family: 'Bebas Neue', cursive;
 	font-size: 20px;
 	background-color: slategrey;
+	margin-left: 5px;
 }
 
 #planetToHome {
@@ -187,4 +195,5 @@ img {
 	font-family: 'Bebas Neue', cursive;
 	font-size: 20px;
 	background-color: slategrey;
+	margin-right: 5px;
 }

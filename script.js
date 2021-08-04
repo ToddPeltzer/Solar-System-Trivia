@@ -18,7 +18,7 @@ const planetModalHeader = document.querySelector('#planetModalHeader')
 const planetModalImage = document.querySelector('#planetModalImage')
 const planetModalFact = document.querySelector('#planetModalFact')
 const planetModalButton = document.querySelector('#planetModalButton')
-// const planetHomeButton = document.querySelector('#planetToHome')
+const planetHomeButton = document.querySelector('#planetToHome')
 
 //planet information
 const planetInformation = [
@@ -73,8 +73,8 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
                 planetModalContainer.style.display = 'block' //has the in game modal appear
                 planetModalHeader.innerText = "You successfully made it out of the solar system!" //creates inner text within the in game modal
                 planetModalImage.src="./gifs/escaped-image.gif" //adds an image to the in game modal
-                planetModalFact.innerText = "What now?...." //adds more text under the image source within the in game modal
-                planetModalButton.innerText = "Go Home?" //adds text to the button in the in game modal
+                planetModalFact.innerText = "You brought your astronaut ice cream right?..." //adds more text under the image source within the in game modal
+                planetModalButton.innerText = "Return Home" //adds text to the button in the in game modal
                 //add event listener for when the button is clicked
                 planetModalButton.addEventListener('click', () => {
                     buttonDiv.innerText = ""
@@ -88,7 +88,7 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
             } else if (event.target.innerText === planetInformation[3]['answer'][0]) {
                 questionDiv.style.display = "none"
                 buttonDiv.style.display = "none"
-                // planetHomeButton.style.display = "none"
+                planetHomeButton.style.display = "none"
                 planetModalContainer.style.display = 'block'
                 planetModalHeader.innerText = `Congratulations, you made it to ${planetInformation[num+1]['name']}! This is your checkpoint for making it to the first gas giant.`
                 planetModalImage.src="./gifs/checkpoint-notification.gif"
@@ -98,7 +98,7 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
             } else if (event.target.innerText === planetInformation[counter]['answer'][0]) {
                 questionDiv.style.display = "none"
                 buttonDiv.style.display = "none"
-                // planetHomeButton.style.display = "none"
+                planetHomeButton.style.display = "none"
                 planetModalContainer.style.display = 'block'
                 planetModalHeader.innerText = `Nice job! You have passed ${planetInformation[num]['name']}!`
                 planetModalImage.src="./gifs/next-level.gif"
@@ -113,22 +113,22 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
         //can also add checkpoint for anything over '4' or whatever number for checkpoint
         //reset lives on checkpoint      
                 planetModalContainer.style.display = 'block'
-                // planetHomeButton.style.display = 'block'
+                planetHomeButton.style.display = 'block'
                 planetModalHeader.innerText = "Oh no! You crashed!"
                 planetModalImage.src="./gifs/crash-image.gif"
                 planetModalFact.innerText = ""
-                // planetHomeButton.innerText = "Home Page"
+                planetHomeButton.innerText = "Home Page"
                 planetModalButton.innerText = "Back to Mercury"
                 counter = -1 //hack from Will
             } else if ((event.target.innerText !== planetInformation[counter]['answer'][0]) && (num >= 4)) {
                         questionDiv.style.display = "none"
                         buttonDiv.style.display = "none"     
-                        // planetHomeButton.style.display = 'block'
+                        planetHomeButton.style.display = 'block'
                         planetModalContainer.style.display = 'block'
                         planetModalHeader.innerText = "Don't worry, you get to start at your checkpoint!"
                         planetModalImage.src="./gifs/checkpoint.gif"
                         planetModalFact.innerText = ""
-                        // planetHomeButton.innerText = "Home Page"
+                        planetHomeButton.innerText = "Home Page"
                         planetModalButton.innerText = "Back to Jupiter"
                         counter = 3 //hack from Will
                     }
@@ -157,10 +157,12 @@ planetModalButton.addEventListener('click', () => {
     planetToPlanet(counter)
 })
 
-// planetHomeButton.addEventListener('click', () => {
-//     welcomeDiv.style.display = "block"
-//     planetModalContainer.style.display = "none"
-//     questionDiv.style.display = "none"
-//     buttonDiv.style.display = "none"
-//     planetModalFact.innerText = ""
-// })
+planetHomeButton.addEventListener('click', () => {
+    welcomeDiv.style.display = "block"
+    planetModalContainer.style.display = "none"
+    questionDiv.style.display = "none"
+    buttonDiv.style.display = "none"
+    planetModalFact.innerText = ""
+    counter = 0
+    buttonDiv.innerText = ""
+})
