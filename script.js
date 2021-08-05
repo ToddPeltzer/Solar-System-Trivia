@@ -50,7 +50,12 @@ const planetInformation = [
 function welcomePageToMercury () {
     welcomeDiv.style.display = 'none'
     questionDiv.style.display = 'block'
-    lives.style.visibility = "visible"
+    lives.style.display = "flex"
+    lifeThree.style.visibility = "visible"
+    lifeTwo.style.visibility = "visible"
+    lifeOne.style.visibility = "visible"
+    wrongAnswer = 3
+    lifeSource(wrongAnswer)
     planetToPlanet(counter)
 }
 
@@ -75,7 +80,7 @@ function hintModal () {
     planetHomeButton.style.display = "none"
     planetModalImageDiv.style.display = "none"
     planetModalFact.innerText = ""
-    planetModalHeader.innerText = `${planetInformation[counter]['hint']}.`
+    planetModalHeader.innerText = `${planetInformation[counter]['hint']}`
     hintButtonClose.innerText = "Close"
 }
 
@@ -94,7 +99,7 @@ function lifeSource (event) {
         lifeThree.style.visibility = "hidden"
         lifeTwo.style.visibility = "hidden"
         lifeOne.style.visibility = "visible"
-    } else if (event == 0) {
+    } else if (event == 0 && counter < 4) {
         lifeThree.style.visibility = "hidden"
         lifeTwo.style.visibility = "hidden"
         lifeOne.style.visibility = "hidden"
@@ -106,10 +111,24 @@ function lifeSource (event) {
         planetModalContainer.style.display = 'block'
         planetHomeButton.style.display = 'block'
         planetModalHeader.innerText = "You ran out of lives."
-        planetModalImage.src="./gifs/tumble.gif"
+        planetModalImage.src="./gifs/crash-image.gif"
         planetModalFact.innerText = ""
         planetHomeButton.innerText = "Home Page"
         planetModalButton.style.display = "none"
+    } else if (event == 0 && counter >= 4) {
+        questionDiv.style.display = "none"
+        buttonDiv.style.display = "none"     
+        hintButtonClose.style.display = 'none'
+        planetModalButton.style.display = 'block'
+        planetHomeButton.style.display = 'block'
+        planetModalImageDiv.style.display = "block"
+        planetModalContainer.style.display = 'block'
+        planetModalHeader.innerText = "Don't worry, you get to start at your checkpoint!"
+        planetModalImage.src="./gifs/checkpoint.gif"
+        planetModalFact.innerText = ""
+        planetHomeButton.innerText = "Home Page"
+        planetModalButton.innerText = "Back to Jupiter"
+        counter = 3 //hack from Will
     }
 }
 
@@ -143,7 +162,7 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
                 planetModalHeader.innerText = "You successfully made it out of the solar system!" //creates inner text within the in game modal
                 planetModalImage.src="./gifs/escaped-image.gif" //adds an image to the in game modal
                 planetModalFact.innerText = "You brought your astronaut ice cream right?..." //adds more text under the image source within the in game modal
-                planetModalButton.innerText = "Return Home" //adds text to the button in the in game modal
+                planetModalButton.innerText = "Turn Around!" //adds text to the button in the in game modal
                 //adding event listener for when the button is clicked
                 planetModalButton.addEventListener('click', () => {
                     buttonDiv.innerText = ""
@@ -166,7 +185,9 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
                 planetModalImage.src="./gifs/checkpoint-notification.gif"
                 planetModalFact.innerText = `${planetInformation[num]['explination']}`
                 planetModalButton.innerText = "Next Planet"
-                wrongAnswer++
+                if (wrongAnswers < 3){
+                    wrongAnswer++
+                }
                 lifeSource(wrongAnswer)
             //if inner text does not match the answer then the crash screen appears
             } else if (event.target.innerText === planetInformation[counter]['answer'][0]) {
@@ -183,37 +204,12 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
                 planetModalButton.innerText = "Next Planet"
             //if inner text does not match the answer then the crash screen appears
             } else if ((event.target.innerText !== planetInformation[counter]['answer'][0]) && (num < 4)) {
-                questionDiv.style.display = "none"
-                buttonDiv.style.display = "none"  
-                hintButtonClose.style.display = 'none'
-                planetModalButton.style.display = 'block'
-                planetModalImageDiv.style.display = "block"
-                planetModalContainer.style.display = 'block'
-                planetHomeButton.style.display = 'block'
-                planetModalHeader.innerText = "Oh no! You crashed!"
-                planetModalImage.src="./gifs/crash-image.gif"
-                planetModalFact.innerText = ""
-                planetHomeButton.innerText = "Home Page"
-                planetModalButton.innerText = "Back to Mercury"
-                counter = -1 //hack from Will
-                // lifeArray.pop().style.visibility = 'hidden'
+                event.target.disabled = true
                 wrongAnswer--
                 lifeSource(wrongAnswer)
             } else if ((event.target.innerText !== planetInformation[counter]['answer'][0]) && (num >= 4)) {
-                questionDiv.style.display = "none"
-                buttonDiv.style.display = "none"     
-                hintButtonClose.style.display = 'none'
-                planetModalButton.style.display = 'block'
-                planetHomeButton.style.display = 'block'
-                planetModalImageDiv.style.display = "block"
-                planetModalContainer.style.display = 'block'
-                planetModalHeader.innerText = "Don't worry, you get to start at your checkpoint!"
-                planetModalImage.src="./gifs/checkpoint.gif"
-                planetModalFact.innerText = ""
-                planetHomeButton.innerText = "Home Page"
-                planetModalButton.innerText = "Back to Jupiter"
+                event.target.disabled = true
                 counter = 3 //hack from Will
-                // lifeArray.pop().style.visibility = 'hidden'
                 wrongAnswer--
                 lifeSource(wrongAnswer)
             }

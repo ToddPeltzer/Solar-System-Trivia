@@ -20,7 +20,7 @@ body {
 
 .lives {
 	display:flex;
-	visibility: hidden;
+	display: none;
 	justify-content: flex-end;
 	color: white;
 	text-shadow:
