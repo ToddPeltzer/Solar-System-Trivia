@@ -181,7 +181,7 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
                 planetModalButton.style.display = 'block'
                 planetModalImageDiv.style.display = "block"
                 planetModalContainer.style.display = 'block'
-                planetModalHeader.innerText = `You made it to a checkpoint on ${planetInformation[num+1]['name']}!`
+                planetModalHeader.innerText = `You made it to the outer solar system! A checkpoint has been made on ${planetInformation[num+1]['name']}.`
                 planetModalImage.src="./gifs/checkpoint-notification.gif"
                 planetModalFact.innerText = `${planetInformation[num]['explination']}`
                 planetModalButton.innerText = "Next Planet"
