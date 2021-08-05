@@ -137,10 +137,10 @@ function lifeSource (event) {
         planetModalButton.style.display = "none"
 
     //no lives but made the checkpoint
-    } else if (event < 0 && counter >= 4) {
+    } else if (event <= 0 && counter >= 4) {
         //switching displays
         questionDiv.style.display = "none"
-        buttonDiv.style.display = "none"     
+        buttonDiv.style.visibility = "none"     
         hintButtonClose.style.display = 'none'
         planetModalButton.style.display = 'block'
         planetHomeButton.style.display = 'block'
@@ -152,6 +152,13 @@ function lifeSource (event) {
         planetHomeButton.innerText = "Home Page" //making home page button text
         planetModalButton.innerText = "Back to Jupiter" //making checkpoint button text
         counter = 3 //so that the checkpoint will be jupiter (3 instead of 4 according to Will as a 'hack')
+        //
+        buttonDiv.innerText = ""
+        lifeThree.style.visibility = "visible"
+        lifeTwo.style.visibility = "visible"
+        lifeOne.style.visibility = "visible"
+        wrongAnswer = 3
+        planetToPlanet(counter)
     }
 }
 
@@ -265,13 +272,6 @@ hintButtonClose.addEventListener('click', closeHintModal) //button will close th
 planetModalButton.addEventListener('click', () => {
     buttonDiv.innerText = ""
     counter++
-    planetModalContainer.style.display = 'none'
-    planetToPlanet(counter)
-})
-
-checkpointButton.addEventListener('click', () => {
-    buttonDiv.innerText = ""
-    counter =
     planetModalContainer.style.display = 'none'
     planetToPlanet(counter)
 })
