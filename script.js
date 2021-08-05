@@ -11,8 +11,8 @@ const lifeTwo = document.querySelector('#lifeTwo')
 const lifeThree = document.querySelector('#lifeThree')
 
 //adding hint variables
-const hintButton = document.querySelector('#hintButton') //set variable for hint
-const hintButtonClose = document.querySelector('#hintClosed') //set variable for button close
+const hintButton = document.querySelector('#hintButton') 
+const hintButtonClose = document.querySelector('#hintClosed') 
 
 //adding variables for the planet question page
 const questionDiv = document.querySelector('.questionSection')
@@ -118,7 +118,7 @@ function lifeSource (event) {
         lifeOne.style.visibility = "visible"
 
     //no lives left and didn't reach the checkpoint
-    } else if (event == 0 && counter < 4) {
+    } else if (event ==  0 && counter <4) {
         //switching displays
         lifeThree.style.visibility = "hidden"
         lifeTwo.style.visibility = "hidden"
@@ -151,7 +151,7 @@ function lifeSource (event) {
         planetModalFact.innerText = "" //clearing the modal fact section (not wanted)
         planetHomeButton.innerText = "Home Page" //making home page button text
         planetModalButton.innerText = "Back to Jupiter" //making checkpoint button text
-        counter = 3 //so that the checkpoint will be jupiter (3 instead of 4 according to Will as a 'hack')
+        counter = 3 //so that the checkpoint will be jupiter (3 instead of 4 according to Will's 'hack')
         //
         buttonDiv.innerText = ""
         lifeThree.style.visibility = "visible"

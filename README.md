@@ -1,6 +1,7 @@
 # Solar-System-Trivia
 Trivia game about the planets in our solar system.
 
+Link to the game -> https://toddpeltzer.github.io/Solar-System-Trivia/
 
 ## Technologies Used
 HTML | CSS | JavaScript
