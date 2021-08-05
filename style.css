@@ -19,7 +19,8 @@ body {
 }
 
 .lives {
-	display: none;
+	display:flex;
+	visibility: hidden;
 	justify-content: flex-end;
 	color: white;
 	text-shadow:

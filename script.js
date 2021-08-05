@@ -1,6 +1,7 @@
 const welcomeDiv = document.querySelector('.welcomeSection') //set a variable for welcome div section
 const mainHomeButton = document.querySelector('#mainHome')
 const lives = document.querySelector('.lives')//set variable for lives class to display when game starts
+const lifeCounterDiv = document.querySelector('#lifeCounterDiv')
 const lifeOne = document.querySelector('#lifeOne')
 const lifeTwo = document.querySelector('#lifeTwo')
 const lifeThree = document.querySelector('#lifeThree')
@@ -13,6 +14,7 @@ const planet = document.querySelector('.planetName') //set variable where planet
 const planetImage = document.querySelector('.planetImage') //set variable where planet images will go
 const question = document.querySelector('.planetQuestion') ////set variable where planet questions will go
 let counter = 0 //set variable for the counter in which our function will run through the array of objects based on correct/incorrect
+let wrongAnswer = 3
 
 //adding rule modal elements
 const rulesModalContainer = document.querySelector('#rulesModalContainer')
@@ -42,11 +44,13 @@ const planetInformation = [
     {name: "Neptune",   image: "./images/neptune-image.png", question: "What was Neptune named after?",                                              answer: ["God of the Sea"],        wrongAnswers: ["God of the Air", "God of the Land", "God of the Moon"],                         explination: "It was given this name due to its blue ocean-like color.",                                                                            hint: "Think of the color of the planet."}
 ]
 
+
+
 //function to get to mercury from home page
 function welcomePageToMercury () {
     welcomeDiv.style.display = 'none'
     questionDiv.style.display = 'block'
-    lives.style.display = 'flex'
+    lives.style.visibility = "visible"
     planetToPlanet(counter)
 }
 
@@ -81,6 +85,34 @@ function closeHintModal () {
     planetModalContainer.style.display = 'none'
 }
 
+function lifeSource (event) {
+    if (event == 2) {
+        lifeThree.style.visibility = "hidden"
+        lifeTwo.style.visibility = "visible"
+        lifeOne.style.visibility = "visible"
+    } else if (event == 1) {
+        lifeThree.style.visibility = "hidden"
+        lifeTwo.style.visibility = "hidden"
+        lifeOne.style.visibility = "visible"
+    } else if (event == 0) {
+        lifeThree.style.visibility = "hidden"
+        lifeTwo.style.visibility = "hidden"
+        lifeOne.style.visibility = "hidden"
+        questionDiv.style.display = "none"
+        buttonDiv.style.display = "none"  
+        hintButtonClose.style.display = 'none'
+        planetModalButton.style.display = 'block'
+        planetModalImageDiv.style.display = "block"
+        planetModalContainer.style.display = 'block'
+        planetHomeButton.style.display = 'block'
+        planetModalHeader.innerText = "You ran out of lives."
+        planetModalImage.src="./gifs/tumble.gif"
+        planetModalFact.innerText = ""
+        planetHomeButton.innerText = "Home Page"
+        planetModalButton.style.display = "none"
+    }
+}
+
 //function to go from planet top planet if answering correctly. Also allows for restart if answer is incorrect
 function planetToPlanet (num) { //num will be the counter, which starts at 0. We use this to pull fropm our object array of planet information
     questionDiv.style.display = "block" //the question div is now visible
@@ -112,7 +144,7 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
                 planetModalImage.src="./gifs/escaped-image.gif" //adds an image to the in game modal
                 planetModalFact.innerText = "You brought your astronaut ice cream right?..." //adds more text under the image source within the in game modal
                 planetModalButton.innerText = "Return Home" //adds text to the button in the in game modal
-                //add event listener for when the button is clicked
+                //adding event listener for when the button is clicked
                 planetModalButton.addEventListener('click', () => {
                     buttonDiv.innerText = ""
                     counter = 0
@@ -134,6 +166,8 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
                 planetModalImage.src="./gifs/checkpoint-notification.gif"
                 planetModalFact.innerText = `${planetInformation[num]['explination']}`
                 planetModalButton.innerText = "Next Planet"
+                wrongAnswer++
+                lifeSource(wrongAnswer)
             //if inner text does not match the answer then the crash screen appears
             } else if (event.target.innerText === planetInformation[counter]['answer'][0]) {
                 questionDiv.style.display = "none"
@@ -162,6 +196,9 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
                 planetHomeButton.innerText = "Home Page"
                 planetModalButton.innerText = "Back to Mercury"
                 counter = -1 //hack from Will
+                // lifeArray.pop().style.visibility = 'hidden'
+                wrongAnswer--
+                lifeSource(wrongAnswer)
             } else if ((event.target.innerText !== planetInformation[counter]['answer'][0]) && (num >= 4)) {
                 questionDiv.style.display = "none"
                 buttonDiv.style.display = "none"     
@@ -176,6 +213,9 @@ function planetToPlanet (num) { //num will be the counter, which starts at 0. We
                 planetHomeButton.innerText = "Home Page"
                 planetModalButton.innerText = "Back to Jupiter"
                 counter = 3 //hack from Will
+                // lifeArray.pop().style.visibility = 'hidden'
+                wrongAnswer--
+                lifeSource(wrongAnswer)
             }
         })
         buttonDiv.appendChild(elementButton) //appending the buttons to the button div
