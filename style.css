@@ -269,6 +269,15 @@ img {
 	margin-left: 5px;
 }
 
+#checkpointButton {
+	display: none;
+	padding: 3px 10px 0px 10px;
+	font-family: 'Bebas Neue', cursive;
+	font-size: 20px;
+	background-color: slategrey;
+	margin-right: 5px;
+}
+
 #planetToHome {
 	padding: 3px 10px 0px 10px;
 	font-family: 'Bebas Neue', cursive;
