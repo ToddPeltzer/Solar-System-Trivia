@@ -1,7 +1,7 @@
 const welcomeDiv = document.querySelector('.welcomeSection') //set a variable for welcome div section
-const mainHomeButton = document.querySelector('#mainHome')
-const lives = document.querySelector('.lives')//set variable for lives class to display when game starts
-const lifeCounterDiv = document.querySelector('#lifeCounterDiv')
+const mainHomeButton = document.querySelector('#mainHome') //set variable
+const lives = document.querySelector('.lives') //set variable for lives class to display when game starts
+const lifeCounterDiv = document.querySelector('#lifeCounterDiv') //set variable for
 const lifeOne = document.querySelector('#lifeOne')
 const lifeTwo = document.querySelector('#lifeTwo')
 const lifeThree = document.querySelector('#lifeThree')
@@ -12,9 +12,9 @@ const questionDiv = document.querySelector('.questionSection') //set variable fo
 const buttonDiv = document.querySelector('.buttonDiv') //set variable where answer buttons will be created
 const planet = document.querySelector('.planetName') //set variable where planet names will go
 const planetImage = document.querySelector('.planetImage') //set variable where planet images will go
-const question = document.querySelector('.planetQuestion') ////set variable where planet questions will go
+const question = document.querySelector('.planetQuestion') //set variable where planet questions will go
 let counter = 0 //set variable for the counter in which our function will run through the array of objects based on correct/incorrect
-let wrongAnswer = 3
+let wrongAnswer = 3 //set variable for the lives in game
 
 //adding rule modal elements
 const rulesModalContainer = document.querySelector('#rulesModalContainer')
@@ -35,7 +35,7 @@ const planetHomeButton = document.querySelector('#planetToHome')
 //planet information
 const planetInformation = [
     {name: "Mercury",   image: "./images/mercury-image.png", question: "What color is Mercury's sky?",                                               answer: ["Black"],                 wrongAnswers: ["Blue", "Red", "Orange"],                                                        explination: "Mercury has no real atmosphere to scatter the Sun's rays, and so the sky appears black.",                                             hint: "Mercury has no atmosphere."},
-    {name: "Venus",     image: "./images/venus-image.png",   question: "Why is Venus often referred to as Earth's sister planet?",                   answer: ["Similar size and mass"], wrongAnswers: ["Same calender year", "Water on their surfaces", "Similar temperature"],         explination: "While Earth is slightly larger and holds more mass, if they could be viewed side by side they would appear identical.",               hint: "They could borrow eachothers outfits."},
+    {name: "Venus",     image: "./images/venus-image.png",   question: "Why is Venus often referred to as Earth's sister planet?",                   answer: ["Similar size and mass"], wrongAnswers: ["Same calendar year", "Water on their surfaces", "Similar temperature"],         explination: "While Earth is slightly larger and holds more mass, if they could be viewed side by side they would appear identical.",               hint: "They could borrow eachothers outfits."},
     {name: "Earth",     image: "./images/earth-image.png",   question: "How does Earth's size compare to the other planets in our solar system?",    answer: ["Fifth-largest"],         wrongAnswers: ["Third-largest", "Fourth-largest", "Sixth-largest"],                             explination: "The order from largest to smallest planet in our solar system is Jupiter, Saturn, Uranus, Neptune, Earth, Venus, Mars, and Mercury.", hint: "The gas giants are all larger than Earth."},
     {name: "Mars",      image: "./images/mars-image.png",    question: "95 percent of Mar's atmosphere is made up of?",                              answer: ["Carbon Dioxide"],        wrongAnswers: ["Oxygen", "Nitrogen", "Carbon Monoxide"],                                        explination: "The photochemical reactions in the atmosphere tend to oxidize the organic species and turn them into carbon dioxide.",                hint: "We expell this all day."},
     {name: "Jupiter",   image: "./images/jupiter-image.png", question: "What is Jupiter's Great Red Spot?",                                          answer: ["Giant storm"],           wrongAnswers: ["Shadow from Mars", "Sunlight hitting Jupiter", "Land formation"],               explination: "Jupiter's Great Red Spot was discovered in 1830 and is suspected to be over 400 years old. It is nearly twice the size of Earth!",    hint: "Make sure to catch the weather channel for this one."},

@@ -3,9 +3,9 @@ html {
     background-size: cover;
     width: 100vw;
     height: 100vh;
-    position: fixed;
     top: 0;
     left: 0;
+	overflow: auto;
 }   
 
 .bodyDiv {
@@ -16,6 +16,7 @@ body {
     color: white;
     display: block;
     text-align: center;
+	overflow: auto;
 }
 
 .lives {
